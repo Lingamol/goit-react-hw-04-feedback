@@ -33,7 +33,7 @@ export class FeedbackInfo extends Component {
   //   console.log('Bad');
   //   this.setState({ bad: +1 });
   // };
-
+  ////////////
   countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad;
   };
