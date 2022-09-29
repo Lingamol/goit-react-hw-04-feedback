@@ -13,7 +13,7 @@ export function Statistics({ good, neutral, bad, total, positivePercentage }) {
             <span>Neutral: {neutral}</span>
             <span>Bad: {bad}</span>
             <span>total: {total}</span>
-            <span>positivePercentage: {positivePercentage} %</span>
+            <span>positivePercentage: {positivePercentage} % </span>
           </>
         ) : (
           <Notification message="There is no feedback" />
