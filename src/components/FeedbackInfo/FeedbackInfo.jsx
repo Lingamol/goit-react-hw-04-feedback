@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
+import { Statistics } from 'components/Statistics/Statistics';
 
 // import FriendListItem from '../FriendListItem/FriendListItem';
 // import { List, Item } from './FriendList.styled';
@@ -21,19 +22,38 @@ export class FeedbackInfo extends Component {
   };
   handleOnClickBad = event => {
     console.log('Bad');
-    this.setState({ bad: this.state.bad + 1 });
+    this.setState({ bad: +1 });
   };
+
+  countTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
+  countPositiveFeedbackPercentage = () => {
+    return Math.round(
+      (this.state.good /
+        (this.state.good + this.state.neutral + this.state.bad)) *
+        100
+    );
+  };
+
   render() {
     return (
       <div>
-        <h1>Please leave feedback</h1>
+        <h2>Please leave feedback</h2>
         <div>
           <button onClick={this.handleOnClickGood}>Good</button>
           <button onClick={this.handleOnClickNeutral}>Neutral</button>
           <button onClick={this.handleOnClickBad}>Bad</button>
-          <span>Good: {this.state.good}</span>
+          {/* <span>Good: {this.state.good}</span>
           <span>Neutral: {this.state.neutral}</span>
-          <span>Bad: {this.state.bad}</span>
+          <span>Bad: {this.state.bad}</span> */}
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
         </div>
       </div>
     );
