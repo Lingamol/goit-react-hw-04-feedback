@@ -1,16 +1,14 @@
 // import PropTypes from 'prop-types';
 
-export function Statistics({ good, neutral, bad, total, positivePercentage }) {
+export function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
-    <div>
-      <h1>Statistics</h1>
-      <div>
-        <span>Good: {good}</span>
-        <span>Neutral: {neutral}</span>
-        <span>Bad: {bad}</span>
-        <span>total: {total}</span>
-        <span>positivePercentage: {positivePercentage} %</span>
-      </div>
-    </div>
+    <ul>
+      {options.map(option => (
+        <li key={option}>
+          <button onClick={() => onLeaveFeedback(option)}>{option}</button>
+        </li>
+      ))}
+    </ul>
   );
 }
+// onClick={handleOnClick({ option })}

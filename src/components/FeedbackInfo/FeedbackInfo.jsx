@@ -1,7 +1,8 @@
 // import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { Statistics } from 'components/Statistics/Statistics';
-
+import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
+import { Section } from 'components/Section/Section';
 // import FriendListItem from '../FriendListItem/FriendListItem';
 // import { List, Item } from './FriendList.styled';
 
@@ -11,19 +12,27 @@ export class FeedbackInfo extends Component {
     neutral: 0,
     bad: 0,
   };
+  options = ['good', 'neutral', 'bad'];
 
-  handleOnClickGood = event => {
-    console.log('Good');
-    this.setState({ good: this.state.good + 1 });
+  onLeaveFeedback = type => {
+    console.log(type);
+    this.setState(prevState => ({
+      [type]: prevState[type] + 1,
+    }));
   };
-  handleOnClickNeutral = event => {
-    this.setState({ neutral: this.state.neutral + 1 });
-    console.log('Neutral');
-  };
-  handleOnClickBad = event => {
-    console.log('Bad');
-    this.setState({ bad: +1 });
-  };
+
+  // handleOnClickGood = event => {
+  //   console.log('Good');
+  //   this.setState({ good: this.state.good + 1 });
+  // };
+  // handleOnClickNeutral = event => {
+  //   this.setState({ neutral: this.state.neutral + 1 });
+  //   console.log('Neutral');
+  // };
+  // handleOnClickBad = event => {
+  //   console.log('Bad');
+  //   this.setState({ bad: +1 });
+  // };
 
   countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad;
@@ -38,24 +47,38 @@ export class FeedbackInfo extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <h2>Please leave feedback</h2>
-        <div>
-          <button onClick={this.handleOnClickGood}>Good</button>
+
+        <Section
+          name="feedback-options"
+          children={
+            <FeedbackOptions
+              options={this.options}
+              onLeaveFeedback={this.onLeaveFeedback}
+            />
+          }
+        />
+
+        {/* <button onClick={this.handleOnClickGood}>Good</button>
           <button onClick={this.handleOnClickNeutral}>Neutral</button>
-          <button onClick={this.handleOnClickBad}>Bad</button>
-          {/* <span>Good: {this.state.good}</span>
+          <button onClick={this.handleOnClickBad}>Bad</button> */}
+        {/* <span>Good: {this.state.good}</span>
           <span>Neutral: {this.state.neutral}</span>
           <span>Bad: {this.state.bad}</span> */}
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
-        </div>
-      </div>
+        <Section
+          name="feedback-statistics"
+          children={
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          }
+        />
+      </>
     );
   }
 }
