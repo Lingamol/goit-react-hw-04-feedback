@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const OptionBtnList = styled.ul`
   list-style: none;
   display: flex;
+  justify-content: center;
 `;
 export const OptionBtnListItem = styled.li`
   &:not(:last-child) {
@@ -13,6 +14,8 @@ export const OptionBtn = styled.button`
   border-radius: 5px;
   font-size: larger;
   padding: 5px;
+  border: none;
+
   background-color: ${props => {
     switch (props.optionColor) {
       case 'good':
