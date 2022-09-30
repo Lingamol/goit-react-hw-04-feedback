@@ -9,10 +9,8 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  options = ['good', 'neutral', 'bad'];
 
   onLeaveFeedback = type => {
-    // console.log(type);
     this.setState(prevState => ({
       [type]: prevState[type] + 1,
     }));
@@ -30,26 +28,29 @@ export class App extends Component {
   };
 
   render() {
+    const options = Object.keys(this.state);
+    const totalFeedback = this.countTotalFeedback();
+    const FeedbackpositivePercentage = this.countPositiveFeedbackPercentage();
     return (
       <div>
         <Section
-          name={'Please leave feedback'}
+          title={'Please leave feedback'}
           children={
             <FeedbackOptions
-              options={this.options}
+              options={options}
               onLeaveFeedback={this.onLeaveFeedback}
             />
           }
         />
         <Section
-          name={'Statistics'}
+          title={'Statistics'}
           children={
             <Statistics
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
-              total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
+              total={totalFeedback}
+              positivePercentage={FeedbackpositivePercentage}
             />
           }
         />
