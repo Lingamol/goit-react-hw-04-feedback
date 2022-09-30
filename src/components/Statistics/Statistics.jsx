@@ -1,11 +1,10 @@
-import { Notification } from 'components/Notification/Notification';
+import Notification from 'components/Notification';
 
-// import PropTypes from 'prop-types';
-import(Notification);
-export function Statistics({ good, neutral, bad, total, positivePercentage }) {
+import PropTypes from 'prop-types';
+
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
     <div>
-      <h2>Statistics</h2>
       <div>
         {total ? (
           <>
@@ -21,4 +20,12 @@ export function Statistics({ good, neutral, bad, total, positivePercentage }) {
       </div>
     </div>
   );
-}
+};
+export default Statistics;
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+};
