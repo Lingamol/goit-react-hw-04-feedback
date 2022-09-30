@@ -5,19 +5,17 @@ import PropTypes from 'prop-types';
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
     <div>
-      <div>
-        {total ? (
-          <>
-            <span>Good: {good}</span>
-            <span>Neutral: {neutral}</span>
-            <span>Bad: {bad}</span>
-            <span>total: {total}</span>
-            <span>positivePercentage: {positivePercentage} % </span>
-          </>
-        ) : (
-          <Notification message="There is no feedback" />
-        )}
-      </div>
+      {total ? (
+        <>
+          <span>Good: {good}</span>
+          <span>Neutral: {neutral}</span>
+          <span>Bad: {bad}</span>
+          <span>total: {total}</span>
+          <span>positivePercentage: {positivePercentage} % </span>
+        </>
+      ) : (
+        <Notification message="There is no feedback" />
+      )}
     </div>
   );
 };
