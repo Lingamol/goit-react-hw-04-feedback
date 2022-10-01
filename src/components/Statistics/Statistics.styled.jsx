@@ -11,6 +11,7 @@ export const StatInfoItem = styled.div`
   border-radius: 5px;
   width: 200px;
   border: 2px solid blue;
+  padding: 5px;
   &:not(:last-child) {
     margin-bottom: 15px;
   }
