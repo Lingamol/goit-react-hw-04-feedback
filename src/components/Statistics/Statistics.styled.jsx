@@ -15,14 +15,18 @@ export const StatInfoItem = styled.div`
     margin-bottom: 15px;
   }
   background-color: ${props => {
-    if (Number(props.persentege) < 40) {
-      return '#FF0000';
-    } else if (Number(props.persentege) > 39) {
-      return '#FFA812';
-    } else if (Number(props.persentege) > 59) {
-      return '#21D100';
-    } else {
-      return '#ffffff';
+    let color = '#ffffff';
+
+    if (Number(props.percentage) > 0) {
+      color = '#FF0000';
     }
+
+    if (Number(props.percentage) > 40) {
+      color = '#FFA812';
+    }
+    if (Number(props.percentage) > 60) {
+      color = '#21D100';
+    }
+    return color;
   }};
 `;
