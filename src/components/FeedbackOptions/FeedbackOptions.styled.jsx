@@ -4,6 +4,7 @@ export const OptionBtnList = styled.ul`
   list-style: none;
   display: flex;
   justify-content: center;
+  padding: 0;
 `;
 export const OptionBtnListItem = styled.li`
   &:not(:last-child) {
