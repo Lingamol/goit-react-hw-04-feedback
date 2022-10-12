@@ -12,7 +12,8 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
         <OptionBtnListItem key={option}>
           <OptionBtn
             optionColor={option}
-            onClick={() => onLeaveFeedback(option)}
+            onClick={event => onLeaveFeedback(event)}
+            name={option}
           >
             {option}
           </OptionBtn>
